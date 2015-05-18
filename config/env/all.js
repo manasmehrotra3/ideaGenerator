@@ -22,6 +22,7 @@ module.exports = {
 				'public/lib/fileapi/ng-file-upload-shim.min.js',
 				'public/lib/jquery/dist/jquery.min.js',
 				'public/lib/angular/angular.js',
+				'public/lib/fileapi/ng-file-upload.min.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-socket-io/socket.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
