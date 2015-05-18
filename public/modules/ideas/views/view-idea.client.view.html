@@ -1,0 +1,74 @@
+<section data-ng-controller="IdeasController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="idea.title"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == idea.user._id || authentication.user.roles.indexOf('admin')!=-1">
+		<!--[if !IE]> -->
+		<a class="btn btn-primary" href="/#!/ideas/{{idea._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<!-- <![endif]-->
+		<a data-ng-show="authentication.user.roles.indexOf('admin')== -1" class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id != idea.user._id && authentication.user.roles.indexOf('admin')== -1 && idea.volunteer.indexOf(authentication.user.displayName)==-1">
+		<a class="btn btn-primary" data-ng-click="volunteer();">
+			<i class="glyphicon glyphicon-thumbs-up"></i>
+		</a>
+	</div>
+	<div style="margin-right: 5px;" class="pull-right" data-ng-show="authentication.user.roles.indexOf('admin')!=-1">
+		<a class="btn btn-primary" data-ng-click="approve();">
+			<i class="glyphicon glyphicon-ok"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="removepending();">
+			<i class="glyphicon glyphicon-remove"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="idea.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="idea.user.displayName"></span>
+		</em>
+	</small>
+	<p class="lead" data-ng-bind="idea.content"></p>
+
+	<div data-ng-show="idea.originalName" class="lead">
+		<b>Attachment:</b>&nbsp;
+		<span data-ng-bind="idea.originalName"></span>
+		<a href="/{{idea.attachment}}" target="_blank" download="{{idea.originalName}}">
+			<i class="glyphicon glyphicon-download-alt"></i>
+		</a>
+	</div>
+
+	<div data-ng-show="authentication.user._id == idea.user._id">
+		<b>Status:</b>&nbsp; 
+		<span data-ng-bind="idea.status"></span>
+	</div>
+
+	<div data-ng-show="idea.comment && authentication.user._id == idea.user._id">
+		<p><b>Admin:</b>
+		"<span style="font-style: italic;" data-ng-bind="idea.comment"></span>"</p>
+	</div>
+
+	<div data-ng-show="idea.volunteer.length && authentication.user.roles.indexOf('admin')==-1">
+		Volunteers:&nbsp; 
+		<span data-ng-bind="idea.volunteer"></span>
+	</div>
+
+	<div data-ng-show="idea.volunteer.length && authentication.user.roles.indexOf('admin')!=-1">
+		<b>Edit Volunteers:</b>&nbsp; 
+		<div ng-repeat="volunteer in idea.volunteer">{{volunteer}} 
+			<a href="#" data-ng-click="removeVolunteer(idea.volunteer, $index)">
+				<small><i class="glyphicon glyphicon-minus"></i></small>
+			</a>
+    	</div>
+	</div>	
+
+	<div data-ng-show="authentication.user.roles.indexOf('admin')!=-1" style="margin-top: 15px;">
+		<p><b>Comment:</b></p>
+		<textarea name="comment" data-ng-model="idea.comment" id="comment" class="form-control" cols="30" rows="10" placeholder="Admin Comment"></textarea>
+	</div>
+</section>
