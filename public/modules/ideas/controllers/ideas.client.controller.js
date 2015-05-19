@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('ideas').controller('IdeasController', ['$scope', '$timeout', 'Upload', '$stateParams', '$location', 'Authentication', 'Ideas', 'Pending', 'MyIdeas', 'IdeasService', 'IdeasIE', 
-	function($scope, $timeout, Upload, $stateParams, $location, Authentication, Ideas, Pending, MyIdeas, IdeasService, IdeasIE) {
+angular.module('ideas').controller('IdeasController', ['$scope', '$timeout', '$stateParams', '$location', 'Upload', 'Authentication', 'Ideas', 'Pending', 'MyIdeas', 'IdeasService', 'IdeasIE', 
+	function($scope, $timeout, $stateParams, $location, Upload, Authentication, Ideas, Pending, MyIdeas, IdeasService, IdeasIE) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {

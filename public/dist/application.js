@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'ideagenerator';
-	var applicationModuleVendorDependencies = ['ngResource', 'ui.router', 'ui.bootstrap', 'ui.utils'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ui.router', 'ui.bootstrap', 'ui.utils','ngFileUpload'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
@@ -314,8 +314,8 @@ angular.module('ideas').config(['$stateProvider',
 ]);
 'use strict';
 
-angular.module('ideas').controller('IdeasController', ['$scope', '$timeout', 'Upload', '$stateParams', '$location', 'Authentication', 'Ideas', 'Pending', 'MyIdeas', 'IdeasService', 'IdeasIE', 
-	function($scope, $timeout, Upload, $stateParams, $location, Authentication, Ideas, Pending, MyIdeas, IdeasService, IdeasIE) {
+angular.module('ideas').controller('IdeasController', ['$scope', '$timeout', '$stateParams', '$location', 'Upload', 'Authentication', 'Ideas', 'Pending', 'MyIdeas', 'IdeasService', 'IdeasIE', 
+	function($scope, $timeout, $stateParams, $location, Upload, Authentication, Ideas, Pending, MyIdeas, IdeasService, IdeasIE) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
