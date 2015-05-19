@@ -9,8 +9,12 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
 			],
 			js: [
+				'public/lib/es5-shim/es5-shim.min.js',
+				'public/lib/es5-shim/es5-sham.min.js',
+				'public/lib/fileapi/ng-file-upload-shim.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
+				'public/lib/fileapi/ng-file-upload.js', 
 				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
 				'public/lib/angular-ui-utils/ui-utils.min.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js'
